@@ -45,19 +45,19 @@ target_link_libraries(rainmeter_core PUBLIC
   PkgConfig::GDK_PIXBUF lua51)
 target_compile_options(rainmeter_core PRIVATE -Wall -Wextra -Wpedantic)
 
-add_executable(rainmeter-linux src/main.cpp)
-target_link_libraries(rainmeter-linux PRIVATE rainmeter_core PkgConfig::GTK3 PkgConfig::X11 PkgConfig::XRENDER PkgConfig::XRANDR PkgConfig::XEXT)
-target_compile_options(rainmeter-linux PRIVATE -Wall -Wextra -Wpedantic)
+add_executable(xrainmeter src/main.cpp)
+target_link_libraries(xrainmeter PRIVATE rainmeter_core PkgConfig::GTK3 PkgConfig::X11 PkgConfig::XRENDER PkgConfig::XRANDR PkgConfig::XEXT)
+target_compile_options(xrainmeter PRIVATE -Wall -Wextra -Wpedantic)
 
 add_executable(rainmeter-manager src/manager.cpp)
 set_target_properties(rainmeter-manager PROPERTIES OUTPUT_NAME rainmeter)
 target_link_libraries(rainmeter-manager PRIVATE PkgConfig::GTK3 PkgConfig::X11 PkgConfig::XRANDR)
 target_compile_options(rainmeter-manager PRIVATE -Wall -Wextra -Wpedantic)
 
-install(TARGETS rainmeter-linux rainmeter-manager RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+install(TARGETS xrainmeter rainmeter-manager RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(PROGRAMS tools/extract_rmskin.py DESTINATION ${CMAKE_INSTALL_BINDIR})
 install(PROGRAMS tools/rainmeter-rmskin.py DESTINATION ${CMAKE_INSTALL_BINDIR} RENAME rainmeter-rmskin)
-install(FILES packaging/rainmeter-linux-rmskin.desktop
+install(FILES packaging/xrainmeter-rmskin.desktop
   DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/applications)
-install(FILES packaging/rainmeter-linux-rmskin.xml
+install(FILES packaging/xrainmeter-rmskin.xml
   DESTINATION ${CMAKE_INSTALL_DATAROOTDIR}/mime/packages)

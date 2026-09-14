@@ -56,7 +56,7 @@ def runtime_path(explicit: str | None) -> str:
 
 
 def install(package: Path) -> dict[str, object]:
-    target = xdg_data_home() / "rainmeter-linux"
+    target = xdg_data_home() / "xrainmeter"
     skins = target / "Skins"
     fonts = target / "Fonts"
     with tempfile.TemporaryDirectory(prefix="rainmeter-rmskin-") as temporary:
@@ -113,7 +113,7 @@ def install(package: Path) -> dict[str, object]:
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("package", type=Path, help="Rainmeter .rmskin package")
-    parser.add_argument("--runtime", help="rainmeter-linux executable")
+    parser.add_argument("--runtime", help="xrainmeter executable")
     parser.add_argument("--monitor", help="X11 output name, such as HDMI-0")
     parser.add_argument("--position", default="0,0", help="position relative to --monitor")
     parser.add_argument("--auto-exit-ms", type=int, help="close the launched skin after this many milliseconds")
@@ -146,7 +146,7 @@ def main() -> None:
         if args.autostart:
             autostart = Path(os.environ.get("XDG_CONFIG_HOME", Path.home() / ".config")) / "autostart"
             autostart.mkdir(parents=True, exist_ok=True)
-            desktop = autostart / f"rainmeter-linux-{args.package.stem}.desktop"
+            desktop = autostart / f"xrainmeter-{args.package.stem}.desktop"
             if len(targets) != 1:
                 raise RuntimeError("--autostart requires a package with one declared Load entry")
             quoted = " ".join(shlex.quote(part) for part in command + [targets[0]])

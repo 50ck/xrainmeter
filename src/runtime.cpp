@@ -1936,7 +1936,7 @@ struct Runtime::Impl {
       }
       if (Integer(option("Download", "0")) != 0) {
         try {
-          const auto directory = std::filesystem::temp_directory_path() / "rainmeter-linux-webparser";
+          const auto directory = std::filesystem::temp_directory_path() / "xrainmeter-webparser";
           std::filesystem::create_directories(directory);
           const auto path = directory / (std::to_string(std::hash<std::string>{}(url)) + ".download");
           std::ofstream output(path, std::ios::binary | std::ios::trunc);
@@ -4262,7 +4262,7 @@ bool Runtime::WriteArtifacts(const std::filesystem::path& directory, bool click,
       raw_log << event.sequence << '\t' << event.type << '\t' << event.detail << '\n';
     }
     std::ofstream environment(directory / "environment.json");
-    environment << "{\"runtime\":\"rainmeter-linux\",\"version\":\"0.1.0\","
+    environment << "{\"runtime\":\"xrainmeter\",\"version\":\"0.1.0\","
                    "\"renderer\":\"cairo-provisional\"}\n";
     if (!observations.good() || !raw_log.good() || !environment.good()) {
       error = "Unable to write one or more conformance artifacts to " + directory.string();

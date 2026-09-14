@@ -45,7 +45,7 @@ struct Options {
 };
 
 void Usage() {
-  std::cerr << "Usage: rainmeter-linux [--headless] [--output-dir DIR] [--click] "
+  std::cerr << "Usage: xrainmeter [--headless] [--output-dir DIR] [--click] "
                "[--auto-exit-ms MS] [--updates COUNT] [--click-at X,Y] [--monitor OUTPUT] [--position X,Y] "
                "[--state-file FILE --state-section CONFIG] SKIN.ini\n";
 }
@@ -608,7 +608,7 @@ int RunX11(rm::Runtime& runtime, Options& options) {
   size_hints.width = runtime.Width();
   size_hints.height = runtime.Height();
   XSetWMNormalHints(display, window, &size_hints);
-  XClassHint class_hint{const_cast<char*>("rainmeter-linux"), const_cast<char*>("RainmeterLinux")};
+  XClassHint class_hint{const_cast<char*>("xrainmeter"), const_cast<char*>("RainmeterLinux")};
   XSetClassHint(display, window, &class_hint);
   if (settings.z_position == -2) {
     SetAtomList(display, window, "_NET_WM_WINDOW_TYPE", {"_NET_WM_WINDOW_TYPE_DESKTOP"});

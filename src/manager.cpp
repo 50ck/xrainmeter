@@ -977,9 +977,9 @@ int CommandLine(GApplication* application, GApplicationCommandLine* command_line
 
 int main(int argc, char** argv) {
   App app;
-  app.skins = Xdg("XDG_DATA_HOME", Home() / ".local/share") / "rainmeter-linux/Skins";
-  app.state_path = Xdg("XDG_CONFIG_HOME", Home() / ".config") / "rainmeter-linux/state.ini";
-  app.runtime = SiblingExecutable("rainmeter-linux");
+  app.skins = Xdg("XDG_DATA_HOME", Home() / ".local/share") / "xrainmeter/Skins";
+  app.state_path = Xdg("XDG_CONFIG_HOME", Home() / ".config") / "xrainmeter/state.ini";
+  app.runtime = SiblingExecutable("xrainmeter");
   GError* error = nullptr;
   g_key_file_load_from_file(app.state, app.state_path.c_str(), G_KEY_FILE_KEEP_COMMENTS, &error);
   if (error) g_error_free(error);
