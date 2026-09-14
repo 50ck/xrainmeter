@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Rainmeter Linux Skin Installer
+Comment=Install and load a Rainmeter skin package
+Exec=rainmeter-rmskin %f
+MimeType=application/x-rainmeter-skin;
+NoDisplay=true
+Categories=Utility;
